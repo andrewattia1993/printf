@@ -2,49 +2,88 @@
 
 
 /**
- * print_number - function that prints numbers
- * @n: number to be printed
+ * print_int - function that prints numbers
+ * @args: number to be printed
  * Return: void on print_number function
-*/
+ */
 
-void print_int(va_list n)
+int print_int(va_list args)
 {
-	unsigned int i;
+	int n = va_arg(args, int);
+	int i = 1;
+	int last = n % 10, numb, digit, exp = 1;
 
-	i = n;
-
-	if (n < 0)
+	n = n / 10;
+	numb = n;
+	if (last < 0)
 	{
 		_putchar('-');
-		i = -n;
+		numb = -numb;
+		n = -n;
+		last = -last;
+		i++;
 	}
-	if (i / 10 != 0)
+	if (numb > 0)
 	{
-		print_number(i / 10);
+		while (numb / 10 != 0)
+		{
+			exp = exp * 10;
+			numb = numb / 10;
+		}
+		numb = n;
+		while (exp > 0)
+		{
+			digit = numb / exp;
+			_putchar(digit + '0');
+			numb = numb - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
 	}
-	_putchar ((i % 10) + '0');
+	_putchar (last + '0');
+	return (i);
 }
 
 /**
- * print_number - function that prints numbers
- * @n: number to be printed
+ * print_dec - function that prints numbers
+ * @args: number to be printed
  * Return: void on print_number function
-*/
+ */
 
-void print_dec(va_list n)
+int print_dec(va_list args)
 {
-	unsigned int i;
+	int n = va_arg(args, int);
+	int i = 1;
+	int last = n % 10, numb, digit, exp = 1;
 
-	i = n;
-
-	if (n < 0)
+	n = n / 10;
+	numb = n;
+	if (last < 0)
 	{
 		_putchar('-');
-		i = -n;
+		numb = -numb;
+		n = -n;
+		last = -last;
+		i++;
 	}
-	if (i / 10 != 0)
+	if (numb > 0)
 	{
-		print_number(i / 10);
+		while (numb / 10 != 0)
+		{
+			exp = exp * 10;
+			numb = numb / 10;
+		}
+		numb = n;
+		while (exp > 0)
+		{
+			digit = numb / exp;
+			_putchar(digit + '0');
+			numb = numb - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
 	}
-	_putchar ((i % 10) + '0');
+	_putchar (last + '0');
+	return (i);
 }
+

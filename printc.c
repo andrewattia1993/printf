@@ -1,6 +1,5 @@
-#ifndef MAIN_H
 #include "main.h"
-#
+
 /**
  * print_char - prints a char
  * @val: value of type va_list
